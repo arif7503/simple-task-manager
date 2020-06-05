@@ -5,6 +5,7 @@ const totalTask = document.querySelector('.totalTask');
 function addItems(e) {
     e.preventDefault();
     let inputValue = document.querySelector(".input-field").value;
+
     let itemObj = {
         id: randomID(),
         item: inputValue
@@ -34,14 +35,22 @@ function fetchItems() {
     let items = JSON.parse(localStorage.getItem('items'));
     let listItems = document.querySelector('.list-items');
     listItems.innerHTML = '';
+    const d = document.createElement('div');
+    if(items.length>10){
+        d.className="add-scroll";
+    }
+    let newDiv = listItems.appendChild(d);
+
     
-    
+
     items.forEach(item => {
-        return listItems.innerHTML += `<div class="item">
+        return newDiv.innerHTML += `<div class="item">
             <div class="item-text">${item.item}</div>
             <div class="btn-delete" id="btn-delete" onclick="deleteItem(${item.id})">Completed</div>
         </div>`
-    });    
+    }); 
+
+   
 
     let totalTaskcount = items.length;
     totalTask.innerHTML = totalTaskcount;
