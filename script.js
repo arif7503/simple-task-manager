@@ -1,6 +1,7 @@
 const formData = document.querySelector('#form');
 const totalTask = document.querySelector('.totalTask');
 
+
 function addItems(e) {
     e.preventDefault();
     let inputValue = document.querySelector(".input-field").value;
@@ -29,10 +30,12 @@ fetchItems();
 
 //fetch items from local storage
 function fetchItems() {
+    if(localStorage.getItem('items')) {
     let items = JSON.parse(localStorage.getItem('items'));
     let listItems = document.querySelector('.list-items');
     listItems.innerHTML = '';
-
+    
+    
     items.forEach(item => {
         return listItems.innerHTML += `<div class="item">
             <div class="item-text">${item.item}</div>
@@ -42,7 +45,7 @@ function fetchItems() {
 
     let totalTaskcount = items.length;
     totalTask.innerHTML = totalTaskcount;
-    
+    }
 }
 
 // delete the item from the localstorage
