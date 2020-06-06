@@ -121,3 +121,30 @@ label {
     font-size: 20px;
     padding: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile: */
+    .main {
+        min-height: 100vh;
+    }
+    .container {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+    }
+    .form-box { 
+        width: 100%;
+    }
+    .add-scroll {
+        overflow-y: unset;
+        padding-right: 0;
+    }
+    .totalTask {
+        margin-top: 0;
+        font-size: 20px;
+        padding: 7%;
+        height: 10px;
+        width: 10px;
+        margin: 5% auto;
+
+  }
